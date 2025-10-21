@@ -35,11 +35,11 @@ export default function Navbar() {
         <Link href="/fixture" className="hover:text-blue-600 transition">Games</Link>
         <Link href="/results" className="hover:text-blue-600 transition">Standings</Link>
         <Link href="/news" className="hover:text-blue-600 transition">News</Link>
-        <Link href="/register-team" className="hover:text-blue-600 transition">Register Team</Link>
         {session?.user?.role === 'team-manager' && (
           <Link href="/register-player" className="hover:text-blue-600 transition">Register Player</Link>
         )}
         <Link href="/team/dashboard" className="hover:text-blue-600 transition">Team Dashboard</Link>
+        <Link href="/players" className="hover:text-blue-600 transition">Players</Link>
 
         <Link
           href="/signin"

@@ -32,6 +32,9 @@ export default function AdminDashboard() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState(true);
+  const [headlineTitle, setHeadlineTitle] = useState('');
+  const [headlineContent, setHeadlineContent] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   // Redirect non-admins early
   useEffect(() => {
@@ -72,6 +75,36 @@ export default function AdminDashboard() {
 
   const getPlayersForTeam = (teamId: string) => players.filter(p => p.teamId === teamId);
 
+  const handleHeadlineSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const response = await fetch('/api/headlines', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: headlineTitle,
+          content: headlineContent,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Headline added successfully!');
+        setHeadlineTitle('');
+        setHeadlineContent('');
+      } else {
+        alert('Failed to add headline.');
+      }
+    } catch (error) {
+      console.error('Error adding headline:', error);
+      alert('Error adding headline.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   if (status === 'loading' || loading) {
     return <div className="container mx-auto p-6">Loading...</div>;
   }
@@ -84,7 +117,40 @@ export default function AdminDashboard() {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
 
-
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4">Add Headline</h2>
+        <form onSubmit={handleHeadlineSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
+            <input
+              type="text"
+              id="title"
+              value={headlineTitle}
+              onChange={(e) => setHeadlineTitle(e.target.value)}
+              required
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="content" className="block text-sm font-medium text-gray-700">Content</label>
+            <textarea
+              id="content"
+              value={headlineContent}
+              onChange={(e) => setHeadlineContent(e.target.value)}
+              required
+              rows={4}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={submitting}
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+          >
+            {submitting ? 'Adding...' : 'Add Headline'}
+          </button>
+        </form>
+      </section>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Registered Teams</h2>
