@@ -3,6 +3,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Light mode colors blending with existing */
+  --navbar-bg: #e0f2fe;
+  /* Light blue */
+  --navbar-text: #0f172a;
+  /* Dark slate */
+  --button-bg: #fbbf24;
+  /* Bright gold */
+  --button-text: #1f2937;
+  /* Dark gray */
+  /* Fixtures page colors for light mode */
+  --fixture-topbar-bg: #e0f2fe;
+  /* Light blue */
+  --fixture-card-bg: #ffffff;
+  /* White */
+  --fixture-text: #0f172a;
+  /* Dark slate */
+  --fixture-secondary-text: #64748b;
+  /* Slate */
+  --fixture-border: #e2e8f0;
+  /* Light border */
 }
 
 @theme inline {
@@ -12,11 +32,29 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  /* Dark mode colors blending with existing */
+  --navbar-bg: #0a325f;
+  /* Existing dark blue */
+  --navbar-text: #ffffff;
+  /* White */
+  --button-bg: #dab23c;
+  /* Existing gold */
+  --button-text: #ffffff;
+  /* White */
+  /* Fixtures page colors */
+  --fixture-topbar-bg: #1565C0;
+  /* Blue */
+  --fixture-card-bg: #1E1E1E;
+  /* Dark gray */
+  --fixture-text: #ffffff;
+  /* White */
+  --fixture-secondary-text: #9ca3af;
+  /* Gray */
+  --fixture-border: #374151;
+  /* Dark border */
 }
 
 body {
