@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
 import type { NextAuthOptions } from 'next-auth';
-import type { JWT } from 'next-auth/jwt';
+
 
 export const authOptions: NextAuthOptions = {
   providers: [

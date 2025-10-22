@@ -37,6 +37,7 @@ export default function InputResultsPage() {
             }
         } catch (err) {
             setError('Error fetching teams');
+            console.error(err);
         }
     };
 
@@ -70,6 +71,7 @@ export default function InputResultsPage() {
             }
         } catch (err) {
             setError('Error saving match result');
+              console.error(err);
         } finally {
             setLoading(false);
         }

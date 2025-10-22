@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function FixturesPage() {
   const [expanded, setExpanded] = useState<number | null>(null);
@@ -213,10 +214,12 @@ export default function FixturesPage() {
                 >
                   {/* Home */}
                   <div className="flex items-center gap-2 w-1/3">
-                    <img
+                    <Image
                       src={teamLogos[m.home]}
                       alt={m.home}
                       className="w-6 h-6 object-contain"
+                      width={24}
+                      height={24}
                       onError={(e) => (e.currentTarget.src = "/logos/default.png")}
                     />
                     <span className="font-medium" style={{ color: 'var(--fixture-text)' }}>{m.home}</span>
@@ -227,10 +230,12 @@ export default function FixturesPage() {
                   {/* Away */}
                   <div className="flex items-center justify-end gap-2 w-1/3">
                     <span className="font-medium" style={{ color: 'var(--fixture-text)' }}>{m.away}</span>
-                    <img
+                    <Image
                       src={teamLogos[m.away]}
                       alt={m.away}
                       className="w-6 h-6 object-contain"
+                      width={24}
+                      height={24}
                       onError={(e) => (e.currentTarget.src = "/logos/default.png")}
                     />
                   </div>

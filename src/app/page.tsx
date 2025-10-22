@@ -2,8 +2,6 @@
 
 
 import Banner from "@/components/Banner";
-import ResultsPage from "./(pages)/results/page";
-import FixturesPage from "./(pages)/fixture/page";
 import NBA from "@/components/hero";
 
 

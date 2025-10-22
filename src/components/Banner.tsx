@@ -1,22 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Highlights from './Highlights';
 
 export default function Banner() {
-  const [isPlaying, setIsPlaying] = useState(true);
 
-  const togglePlay = () => {
-    const iframe = document.getElementById('hero-video') as HTMLIFrameElement;
-    if (!iframe) return;
 
-    const message = isPlaying
-      ? '{"event":"command","func":"pauseVideo","args":""}'
-      : '{"event":"command","func":"playVideo","args":""}';
 
-    iframe.contentWindow?.postMessage(message, '*');
-    setIsPlaying(!isPlaying);
-  };
 
   return (
      <div className="bg-gray-100">
