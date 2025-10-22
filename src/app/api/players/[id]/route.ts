@@ -98,7 +98,7 @@
 //     await Player.findByIdAndDelete(params.id);
 
 //     return NextResponse.json({ message: "Player deleted successfully" });
-    
+
 //   } catch (error) {
 //     return NextResponse.json({ error: "Failed to delete player" }, { status: 500 });
 //     console.log(error)
@@ -109,6 +109,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/mongodb";
 import Player from "@/models/Player";
 
@@ -120,7 +121,7 @@ export async function GET(
   const { id } = await params;
   await dbConnect();
   try {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     if (!session || session.user.role !== 'team-manager') {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -147,7 +148,7 @@ export async function PUT(
   const { id } = await params;
   await dbConnect();
   try {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     if (!session || session.user.role !== 'team-manager') {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -186,7 +187,7 @@ export async function DELETE(
   const { id } = await params;
   await dbConnect();
   try {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     if (!session || session.user.role !== 'team-manager') {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

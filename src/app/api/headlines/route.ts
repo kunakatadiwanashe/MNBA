@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Headline from '@/models/Headline';
 
 export async function POST(request: NextRequest) {
     try {
-        await connectToDatabase();
+        await dbConnect();
 
         const { title, content } = await request.json();
 
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
     try {
-        await connectToDatabase();
+        await dbConnect();
 
         const headlines = await Headline.find().sort({ date: -1 });
 
