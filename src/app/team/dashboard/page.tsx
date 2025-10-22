@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Key } from 'react';
+import { useState, useEffect, Key, ReactNode } from 'react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
