@@ -1,6 +1,8 @@
-# TODO: Add Headlines Feature
+# TODO: Debug and Fix 500 Error on Upload Endpoint
 
-- [x] Create Headline model in src/models/Headline.ts with fields: title, content, date
-- [x] Create API route src/app/api/headlines/route.ts for POST (create headline) and GET (fetch all headlines)
-- [x] Update src/app/admin/dashboard/page.tsx to add a form for inputting headlines (title and content), with submit functionality
-- [x] Create src/app/headlines/page.tsx to fetch and display headlines from the API
+- [x] Edit src/app/api/upload/route.ts to add detailed logging for error capture and env var checks
+- [x] Restart the development server if necessary (currently running on port 3002)
+- [x] Test the POST endpoint using curl to reproduce the 500 error and observe logs
+- [x] Analyze console logs for specific error details (e.g., Cloudinary config issues, file processing errors)
+- [x] Fix identified issues (e.g., ensure Cloudinary env vars are set, handle file type/size limits) - Fixed by changing base64 to dataURI format for Cloudinary upload
+- [x] Retest the endpoint to confirm the fix - Tested with text file and SVG file, both successful

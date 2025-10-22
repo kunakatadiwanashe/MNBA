@@ -1,6 +1,3 @@
-
-
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -9,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Image from 'next/image';
-import Link from 'next/link';
+
 
 const playerSchema = z.object({
   fullName: z.string().min(1, 'Full name is required'),
@@ -99,22 +96,7 @@ export default function RegisterPlayer() {
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
 
-      {/* Navbar */}
-      <header className="w-full bg-white shadow-sm py-3 px-6 flex justify-between items-center relative z-10">
-        <div className="flex items-center gap-4">
-          <Link href="https://kuntech.co.zw" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="https://res.cloudinary.com/dyikkz1ur/image/upload/v1739973643/blog/file_1739973642190.png"
-              alt="KunTech Logo"
-              width={90}
-              height={45}
-              className="object-contain hover:opacity-80 transition"
-            />
-          </Link>
 
-        </div>
-        <span className="text-sm text-gray-600 hidden sm:block">Sponsored by KunTech</span>
-      </header>
 
       {/* Main Form Card */}
       <main className="flex-grow flex items-center justify-center p-4 relative z-10">

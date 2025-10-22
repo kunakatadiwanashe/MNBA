@@ -40,6 +40,9 @@ export default function Navbar() {
         )}
         <Link href="/team/dashboard" className="hover:text-blue-600 transition">Team Dashboard</Link>
         <Link href="/players" className="hover:text-blue-600 transition">Players</Link>
+        <Link href="/executive" className="hover:text-blue-600 transition"> Executive</Link>
+
+
 
         <Link
           href="/signin"
@@ -64,12 +67,19 @@ export default function Navbar() {
       {/* Mobile dropdown menu */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-start p-4 space-y-3 md:hidden">
-          <Link href="/fixture" className="w-full py-2 border-b" onClick={() => setMenuOpen(false)}>Fixture</Link>
+        
+          <Link href="/fixture" className="hover:text-blue-600 transition">Games</Link>
+        <Link href="/results" className="hover:text-blue-600 transition">Standings</Link>
+        <Link href="/news" className="hover:text-blue-600 transition">News</Link>
+
           <Link href="/register-team" className="w-full py-2 border-b" onClick={() => setMenuOpen(false)}>Register Team</Link>
           {session?.user?.role === 'team-manager' && (
             <Link href="/register-player" className="w-full py-2 border-b" onClick={() => setMenuOpen(false)}>Register Player</Link>
           )}
           <Link href="/team/dashboard" className="w-full py-2 border-b" onClick={() => setMenuOpen(false)}>Team Dashboard</Link>
+          <Link href="/players" className="hover:text-blue-600 transition">Players</Link>
+          <Link href="/executive" className="hover:text-blue-600 transition"> Executive</Link>
+
           <Link href="/signin" className="w-full py-2" onClick={() => setMenuOpen(false)}>Sign In</Link>
 
         </div>
