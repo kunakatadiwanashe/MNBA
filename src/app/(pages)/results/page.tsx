@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 interface Match {
   _id: string;
@@ -27,49 +27,30 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // useEffect(() => {
-  //   fetchMatches();
-  // }, []);
 
-  // const fetchMatches = async () => {
-  //   try {
-  //     const response = await fetch('/api/matches');
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setResults(data);
-  //       calculateStandings(data);
-  //     } else {
-  //       setError('Failed to fetch matches');
-  //     }
-  //   } catch (err) {
-  //     setError('Error fetching matches');
-  //     console.error(err);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  const fetchMatches = useCallback(async () => {
-  try {
-    const response = await fetch('/api/matches');
-    if (response.ok) {
-      const data = await response.json();
-      setResults(data);
-      calculateStandings(data);
-    } else {
-      setError('Failed to fetch matches');
-    }
-  } catch (err) {
-    setError('Error fetching matches');
-    console.error(err);
-  } finally {
-    setLoading(false);
-  }
-}, []); // 👈 stable reference
 
 useEffect(() => {
+  const fetchMatches = async () => {
+    try {
+      const response = await fetch('/api/matches');
+      if (response.ok) {
+        const data = await response.json();
+        setResults(data);
+        calculateStandings(data);
+      } else {
+        setError('Failed to fetch matches');
+      }
+    } catch (err) {
+      setError('Error fetching matches');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   fetchMatches();
-}, [fetchMatches]);
+}, []);
+
 
   const calculateStandings = (matches: Match[]) => {
     const stats: { [key: string]: TeamStats } = {};

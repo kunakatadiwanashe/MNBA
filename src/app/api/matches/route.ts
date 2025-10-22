@@ -3,6 +3,7 @@ import dbConnect from "@/lib/mongodb";
 import Match from "@/models/Match";
 
 
+
 export async function GET() {
   await dbConnect();
   try {
