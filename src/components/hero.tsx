@@ -6,9 +6,10 @@ export default function HomePage() {
     {
       id: 1,
       title: "Basketball club memberships and benefits explained",
-      date: "Oct 10, 2025",
+      date: "Nov 1, 2025",
       category: "GAMES",
-      video: "https://www.youtube.com/embed/cT1wmDEmzIE",
+      video: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fvicfallstelevivi%2Fvideos%2F2085256868547932%2F&show_text=true&width=560&t=0" ,
+      
       excerpt:
         "Proin faucibus nec mauris a sodales, sed elementum mi tincidunt. Sed eget viverra egestas nisi in.",
     },
