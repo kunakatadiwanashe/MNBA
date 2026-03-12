@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/fixtures/page": "/fixtures",
+  "/page": "/",
+  "/news/page": "/news",
+  "/players/[id]/page": "/players/[id]",
+  "/standings/page": "/standings",
+  "/teams/page": "/teams",
+  "/teams/[id]/page": "/teams/[id]"
+}
